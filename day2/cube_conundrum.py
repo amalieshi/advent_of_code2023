@@ -29,10 +29,10 @@ if __name__ == "__main__":
                                  )""",
         re.VERBOSE,
     )
-    white_list = (
-        []
+    white_list = []
+    power_rgb_sum = (
+        0  # a list storing all the Game IDs that out of range of the given limit
     )
-    power_rgb_sum = 0# a list storing all the Game IDs that out of range of the given limit
     for loop, clue in enumerate(doc):
         mo = game_regex.search(clue)
         game_id = mo.group("Game_ID")
@@ -54,11 +54,27 @@ if __name__ == "__main__":
         game_5_status = color_police(actual_rgb_value_game5, rgb_limit)
         actual_rgb_value_game6 = color_parser(game_6)
         game_6_status = color_police(actual_rgb_value_game6, rgb_limit)
-        rgb_results = [actual_rgb_value_game1, actual_rgb_value_game2, actual_rgb_value_game3, actual_rgb_value_game4, actual_rgb_value_game5, actual_rgb_value_game6]
+        rgb_results = [
+            actual_rgb_value_game1,
+            actual_rgb_value_game2,
+            actual_rgb_value_game3,
+            actual_rgb_value_game4,
+            actual_rgb_value_game5,
+            actual_rgb_value_game6,
+        ]
         max_rgb = max_rgb_for_a_game(rgb_results)
-        power_rgb = max_rgb[0]*max_rgb[1]*max_rgb[2]
+        power_rgb = max_rgb[0] * max_rgb[1] * max_rgb[2]
         power_rgb_sum += power_rgb
-        if not any([game_1_status, game_2_status, game_3_status, game_4_status,game_5_status,game_6_status]):
+        if not any(
+            [
+                game_1_status,
+                game_2_status,
+                game_3_status,
+                game_4_status,
+                game_5_status,
+                game_6_status,
+            ]
+        ):
             white_list.append(int(game_id))
     print(sum(white_list))
     print(power_rgb_sum)

@@ -1,9 +1,9 @@
 def color_parser(string):
-    '''
+    """
     parsing a subgame into a list of rgb value
     :param string: a string describing the sub-game
     :return: a list of the rgb value
-    '''
+    """
     red = 0
     green = 0
     blue = 0
@@ -35,6 +35,7 @@ def color_police(game_rgb_value, limit_rgb_value):
             return True
         else:
             return False
+
 
 def max_rgb_for_a_game(rgb_results):
     """
