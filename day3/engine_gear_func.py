@@ -1,5 +1,5 @@
 import re
-
+from itertools import permutations
 
 def is_digit(str):
     return [i.isdigit() for i in str]
@@ -28,6 +28,7 @@ def find_positions_of_all_true_cell(boolean_2d_list):
 
 
 def is_neighbor_symbol(is_digit_indices, is_symbol_indices):
+    association_with_symbol = []
     neighbor_indices = []
     for is_digit_index in is_digit_indices:
         r = is_digit_index[0]
@@ -37,7 +38,9 @@ def is_neighbor_symbol(is_digit_indices, is_symbol_indices):
                 cell_index = [i, j]
                 if cell_index in is_symbol_indices:
                     neighbor_indices.append(is_digit_index)
-    return neighbor_indices
+                    association_with_symbol.append(cell_index)
+    return neighbor_indices, association_with_symbol
+
 
 
 def remove_neighbors(part_number_indices):
@@ -47,6 +50,14 @@ def remove_neighbors(part_number_indices):
             single_part_number_indices.append(part_number_index)
     return single_part_number_indices
 
+def remove_neighbors_and_association(part_number_indices, association):
+    single_part_number_indices = []
+    association_without_neighbor = []
+    for loop, part_number_index in enumerate(part_number_indices):
+        if [part_number_index[0], part_number_index[1] + 1] not in part_number_indices:
+            single_part_number_indices.append(part_number_index)
+            association_without_neighbor.append(association[loop])
+    return single_part_number_indices, association_without_neighbor
 
 def extract_value_from_part_number_index(index, doc):
     r = index[0]
@@ -69,3 +80,16 @@ def extract_value_from_part_number_index(index, doc):
     end_value = "".join(end_value)
     final_value = start_value + end_value
     return final_value
+
+
+def find_position_of_the_star(doc):
+    all_positions_gears= []
+    for r, line in enumerate(doc):
+        c = line.find('*')
+        if c != -1:
+            all_positions_gears.append([r, c])
+    return all_positions_gears
+
+
+
+
