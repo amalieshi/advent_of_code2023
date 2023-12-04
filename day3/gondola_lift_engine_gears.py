@@ -33,6 +33,7 @@ if __name__ == "__main__":
         all_part_numbers.append(int(part_number))
     print(f"The sum of all parts numbers is {sum(all_part_numbers)}.")  # answer of part 1
 
+    # The answer in part 2 is incorrect.
     stars_positions = find_position_of_the_star(doc)
     part_numbers_indices_near_gear, association = is_neighbor_symbol(part_number_indices, stars_positions)
     single_part_numbers_indices_near_gear, association = remove_neighbors_and_association(part_numbers_indices_near_gear, association)
