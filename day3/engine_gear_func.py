@@ -1,6 +1,7 @@
 import re
 from itertools import permutations
 
+
 def is_digit(str):
     return [i.isdigit() for i in str]
 
@@ -42,13 +43,13 @@ def is_neighbor_symbol(is_digit_indices, is_symbol_indices):
     return neighbor_indices, association_with_symbol
 
 
-
 def remove_neighbors(part_number_indices):
     single_part_number_indices = []
     for part_number_index in part_number_indices:
         if [part_number_index[0], part_number_index[1] + 1] not in part_number_indices:
             single_part_number_indices.append(part_number_index)
     return single_part_number_indices
+
 
 def remove_neighbors_and_association(part_number_indices, association):
     single_part_number_indices = []
@@ -58,6 +59,7 @@ def remove_neighbors_and_association(part_number_indices, association):
             single_part_number_indices.append(part_number_index)
             association_without_neighbor.append(association[loop])
     return single_part_number_indices, association_without_neighbor
+
 
 def extract_value_from_part_number_index(index, doc):
     r = index[0]
@@ -83,13 +85,9 @@ def extract_value_from_part_number_index(index, doc):
 
 
 def find_position_of_the_star(doc):
-    all_positions_gears= []
+    all_positions_gears = []
     for r, line in enumerate(doc):
-        c = line.find('*')
+        c = line.find("*")
         if c != -1:
             all_positions_gears.append([r, c])
     return all_positions_gears
-
-
-
-
