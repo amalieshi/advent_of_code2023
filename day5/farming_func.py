@@ -17,10 +17,15 @@ def break_down_almanac(almanac):
     almanac_in_str = ''.join(almanac)
     almanac_by_category = re.split(r'\n\n', almanac_in_str)
     for category in almanac_by_category:
-        key, value = re.split(r'\:', category)
-        value = re.split(r'\n', value)
-        value = [i for i in value if i != '']
-        dictionary_key.append(key)
-        dictionary_value.append(value)
+        key, values = re.split(r'\:', category)
+        values = re.split(r'\n', values)
+        values = [i for i in values if i != '']
+        values = [re.split('\s', i) for i in values]
+        for loop, value in enumerate(values):
+            value = [int(i) for i in value if i != '' ]
+            values[loop] = value
+        if key.find(' map') != -1:
+            dictionary_key.append(key.replace(' map', ''))
+        dictionary_value.append(values)
     almanac_in_dictionary = {dictionary_key[i]: dictionary_value[i] for i in range(len(dictionary_key))}
     return almanac_in_dictionary
