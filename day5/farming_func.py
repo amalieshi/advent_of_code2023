@@ -1,5 +1,5 @@
 import re
-
+import pandas as pd
 
 def break_down_almanac(almanac):
     '''
@@ -24,3 +24,26 @@ def break_down_almanac(almanac):
         dictionary_value.append(values)
     almanac_in_dictionary = {dictionary_key[i]: dictionary_value[i] for i in range(len(dictionary_key))}
     return almanac_in_dictionary
+
+def find_swapping_location_and_value(lst):
+    destination_start = lst[0]
+    source_start = lst[1]
+    range_length = lst[2]
+    destination_end = destination_start + range_length
+    source_end = source_start + range_length
+    swap_value = list(range(destination_start, destination_end))
+    swap_location = list(range(source_start, source_end))
+    return swap_location, swap_value
+
+
+def find_max_end_value(lst):
+    destination_start = lst[0]
+    source_start = lst[1]
+    range_length = lst[2]
+    destination_end = destination_start + range_length
+    source_end = source_start + range_length
+    max_end_value = max([destination_end, source_end])
+    return max_end_value
+
+def produce_destination_series(almanac_2D_list):
+    a=1

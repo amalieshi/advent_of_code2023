@@ -6,7 +6,7 @@ import pandas as pd
 # TODO 4: Get the minimum seed number.
 
 if __name__ == '__main__':
-    data_path = '../data/day5/almanac2.txt'
+    data_path = '../data/day5/almanac1.txt'
     with open(data_path,'r') as f:
         doc = f.readlines()
     # Step 1: Break down the list into a dictionary.
@@ -16,3 +16,6 @@ if __name__ == '__main__':
     seeds_value = [int(i) for i in seeds_value]
     almanac_maps = doc[2:]
     almanac_maps = break_down_almanac(almanac_maps)
+    almanac_df = pd.DataFrame.from_dict(almanac_maps)
+    max_value = almanac_df.max()
+    a=1
