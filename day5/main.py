@@ -1,4 +1,4 @@
-from farming_func import break_down_almanac
+from farming_func import break_down_almanac, produce_destination_series
 import re
 import pandas as pd
 # TODO 2: Create an panda dataframe of source and the corresponding destination.
@@ -16,6 +16,5 @@ if __name__ == '__main__':
     seeds_value = [int(i) for i in seeds_value]
     almanac_maps = doc[2:]
     almanac_maps = break_down_almanac(almanac_maps)
-    almanac_df = pd.DataFrame.from_dict(almanac_maps)
-    max_value = almanac_df.max()
+    produce_destination_series(almanac_maps['seed-to-soil'])
     a=1
