@@ -2,7 +2,6 @@ from farming_func import break_down_almanac, produce_destination_list
 import re
 import numpy as np
 import pandas as pd
-# TODO 4: Get the minimum seed number.
 
 if __name__ == '__main__':
     data_path = '../data/day5/almanac2.txt'
@@ -36,5 +35,6 @@ if __name__ == '__main__':
             else:
                 tracker = int(result)
         all_locations.append(tracker)
+    # Get the minimum seed number
     answer_to_part_one = min(all_locations)
     print(f"The answer to part one is {answer_to_part_one}.")
