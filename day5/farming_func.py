@@ -1,8 +1,3 @@
-# TODO 1: Break down the list into a dictionary.
-# TODO 2: Create an panda dataframe of source and the corresponding destination.
-# TODO 3: Find the location of the see.d
-# TODO 4: Get the minimum seed number.
-
 import re
 
 
