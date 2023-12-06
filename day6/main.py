@@ -21,6 +21,7 @@ def find_all_winning_instance_holding_time(time, winning_distance):
 if __name__ == '__main__':
     with open('../data/day6/data2.txt') as f:
         doc = f.readlines()
+    # Part 1
     time_info = re.split(r'\s+', doc[0])
     time_info = [i for i in time_info if i != '']
     distance_info = re.split(r'\s+', doc[1])
@@ -30,3 +31,11 @@ if __name__ == '__main__':
         total_winning_instances.append(len(winning_holding_time))
     result = np.prod(total_winning_instances)
     print(f'The result of part one is {result}')
+
+    # PART 2
+    _, time_info = re.split(r'\:\s+', doc[0])
+    time_info = time_info.replace('\n', '').replace(' ', '')
+    _, distance_info = re.split(r'\:\s+', doc[1])
+    distance_info = distance_info.replace('\n', '').replace(' ', '')
+    ans2 = len(find_all_winning_instance_holding_time(int(time_info), int(distance_info)))
+    print(f'The answer to part 2 is {ans2}')
